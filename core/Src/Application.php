@@ -13,21 +13,6 @@ class Application
     private Route $route;
     private Capsule $dbManager;
 
-    public function __construct(Settings $settings)
-    {
-        $this->settings = $settings;
-        $this->route = new Route();
-        $this->dbManager = new Capsule();
-    }
-
-    public function __get($key)
-    {
-        if ($key === 'settings') {
-            return $this->settings;
-        }
-        throw new Error('Accessing a non-existent property');
-    }
-
     private function dbRun()
     {
         $this->dbManager->addConnection($this->settings->getDbSetting());
@@ -41,5 +26,24 @@ class Application
         $this->dbRun();
         $this->route->setPrefix($this->settings->getRootPath());
         $this->route->start();
+    }
+
+    public function __construct(Settings $settings)
+    {
+        $this->settings = $settings;
+        $this->route = new Route($this->settings->getRootPath());
+        $this->dbManager = new Capsule();
+    }
+
+    public function __get($key)
+    {
+    switch ($key) {
+        case 'settings':
+            return $this->settings;
+        case 'route':
+            return $this->route;
+        default:
+            throw new Error('Accessing a non-existent property');
+    }
     }
 }
