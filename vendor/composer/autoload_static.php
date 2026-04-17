@@ -20,6 +20,7 @@ class ComposerStaticInitd4385e81481a5a0b5d0d16fdd82805c3
         'f625ee536139dfb962a398b200bdb2bd' => __DIR__ . '/..' . '/illuminate/support/functions.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -41,6 +42,7 @@ class ComposerStaticInitd4385e81481a5a0b5d0d16fdd82805c3
         'P' =>
         array (
             'Psr\\SimpleCache\\' => 16,
+            'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
         ),
@@ -57,6 +59,10 @@ class ComposerStaticInitd4385e81481a5a0b5d0d16fdd82805c3
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
             'Illuminate\\Bus\\' => 15,
+        ),
+        'F' =>
+        array (
+            'FastRoute\\' => 10,
         ),
         'D' =>
         array (
@@ -114,6 +120,10 @@ class ComposerStaticInitd4385e81481a5a0b5d0d16fdd82805c3
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
+        'Psr\\Http\\Message\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'Psr\\Container\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
@@ -157,6 +167,10 @@ class ComposerStaticInitd4385e81481a5a0b5d0d16fdd82805c3
         'Illuminate\\Bus\\' =>
         array (
             0 => __DIR__ . '/..' . '/illuminate/bus',
+        ),
+        'FastRoute\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
         'Doctrine\\Inflector\\' =>
         array (

@@ -19,4 +19,5 @@ return array(
     'f625ee536139dfb962a398b200bdb2bd' => $vendorDir . '/illuminate/support/functions.php',
     '72579e7bd17821bb1321b87411366eae' => $vendorDir . '/illuminate/support/helpers.php',
     'ef65a1626449d89d0811cf9befce46f0' => $vendorDir . '/illuminate/events/functions.php',
+    '253c157292f75eb38082b5acb06f3f01' => $vendorDir . '/nikic/fast-route/src/functions.php',
 );
