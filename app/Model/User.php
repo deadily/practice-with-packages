@@ -11,23 +11,24 @@ class User extends Model implements IdentityInterface
     use HasFactory;
 
     public $timestamps = false;
+    
     protected $fillable = [
-        'name',
+        'full_name',
         'login',
-        'password'
+        'password_hash',
+        'role_id'
     ];
 
     protected static function booted()
     {
-        static::created(function ($user) {
-            $user->password = md5($user->password);
-            $user->save();
+        static::creating(function ($user) {
+            $user->password_hash = md5($user->password_hash);
         });
     }
 
     public function findIdentity(int $id)
     {
-        return self::where('id', $id)->first();
+        return static::where('id', $id)->first();
     }
 
     public function getId(): int
@@ -37,7 +38,14 @@ class User extends Model implements IdentityInterface
 
     public function attemptIdentity(array $credentials)
     {
-        return self::where(['login' => $credentials['login'],
-            'password' => md5($credentials['password'])])->first();
+        return self::where([
+            'login' => $credentials['login'],
+            'password_hash' => md5($credentials['password'])
+        ])->first();
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role_id == 1;
     }
 }

@@ -15,7 +15,10 @@
         if (!app()->auth::check()):
             ?>
             <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
-            <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
+        <?php
+        elseif (app()->auth::check() && app()->auth::user()->isAdmin()):
+            ?>
+            <a href="<?= app()->route->getUrl('/signup') ?>">Добавить сотрудника</a>
         <?php
         else:
             ?>
