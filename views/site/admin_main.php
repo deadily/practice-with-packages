@@ -40,7 +40,7 @@ $currentPath = $_SERVER['REQUEST_URI'] ?? '';
             <div class="user-info">
                 <div><?= htmlspecialchars(app()->auth::user()->login ?? 'login') ?></div>
                 <div style="opacity: 0.6;">
-                    <?= app()->auth::user()->isAdmin() ? 'admin' : 'staff' ?>
+                    <?= app()->auth::user()->isAdmin() ? 'Администратор' : 'Сотрудник' ?>
                 </div>
             </div>
 
@@ -71,7 +71,7 @@ $currentPath = $_SERVER['REQUEST_URI'] ?? '';
             <div class="cell">Логин</div>
             <div class="cell">Роль</div>
             <div class="cell action-box">
-                <a class="create-btn" href="<?= app()->route->getUrl('/admin_main') ?>">Создать сотрудника</a>
+                <a class="create-btn" href="<?= app()->route->getUrl('/admin_add_employee') ?>">Создать сотрудника</a>
             </div>
         </div>
 

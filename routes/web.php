@@ -11,6 +11,12 @@ Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
 Route::add(['GET', 'POST'], '/admin_main', [Controller\Site::class, 'admin_main'])
     ->middleware('admin');
 
+Route::add(['GET', 'POST'], '/admin_add_employee', [Controller\Site::class, 'admin_add_employee'])
+    ->middleware('admin');
+
+Route::add(['POST'], '/create_user', [Controller\Site::class, 'create_user'])
+    ->middleware('admin');
+
 Route::add(['GET', 'POST'], '/staff_buildings', [Controller\Site::class, 'staff_buildings'])
     ->middleware('auth');
 

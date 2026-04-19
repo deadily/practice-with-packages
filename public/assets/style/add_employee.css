@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+
+aside {
+    width: 320px;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.logo {
+    padding: 50px 40px;
+    font-size: 32px;
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+nav {
+    flex-grow: 1;
+    margin-top: 20px;
+}
+
+nav a {
+    display: block;
+    padding: 15px 40px;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    transition: background 0.2s;
+}
+
+nav a:hover {
+    background-color: #cecece;
+}
+
+nav a.active {
+    background-color: #BFBFBF;
+}
+
+.sidebar-footer {
+    padding: 20px 0;
+}
+
+.user-info {
+    padding: 0 40px 15px 40px;
+    font-size: 14px;
+    color: #333;
+}
+
+.logout-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    text-decoration: none;
+    color: #000;
+    border-top: 1px solid #BDBDBD;
+    font-size: 16px;
+}
+
+
+main {
+    flex-grow: 1;
+    padding: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1120px;
+}
+
+.page-title-box {
+    background-color: #D9D9D9;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.page-title-box h1 {
+    font-size: 32px;
+    font-weight: normal;
+}
+
+.form-container {
+    background-color: #E6E6E6;
+    padding: 40px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 150px 1fr 200px;
+    row-gap: 25px;
+    align-items: center;
+}
+
+.form-label {
+    font-size: 18px;
+    color: #000;
+    padding-right: 20px;
+}
+
+.form-input-wrapper {
+    grid-column: 2;
+}
+
+.form-input-wrapper input,
+.form-input-wrapper select {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background-color: #FFFFFF;
+    font-size: 16px;
+    color: #000;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Легкая тень как на прототипе */
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    font-size: 12px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #000;
+}
+
+.empty-cell {
+    grid-column: 3;
+}
+
+.button-wrapper {
+    grid-column: 3;
+    justify-self: end;
+}
+
+.confirm-btn {
+    background-color: #D9D9D9;
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 150px;
+    transition: background 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.confirm-btn:hover {
+    background-color: #cecece;
+}
+
