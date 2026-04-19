@@ -11,69 +11,6 @@ body {
     background-color: #fff;
 }
 
-aside {
-    width: 320px;
-    background-color: #D9D9D9;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-}
-
-.logo {
-    padding: 50px 40px;
-    font-size: 32px;
-    line-height: 1.1;
-    font-weight: 500;
-}
-
-nav {
-    flex-grow: 1;
-    margin-top: 20px;
-}
-
-nav a {
-    display: block;
-    padding: 15px 40px;
-    text-decoration: none;
-    color: #000;
-    font-size: 18px;
-    transition: background 0.2s;
-}
-
-nav a:hover {
-    background-color: #cecece;
-}
-
-nav a.active {
-    background-color: #BFBFBF;
-}
-
-.sidebar-footer {
-    padding: 20px 0;
-}
-
-.user-info {
-    padding: 0 40px 15px 40px;
-    font-size: 14px;
-    color: #333;
-}
-
-.user-role {
-    opacity: 0.6;
-}
-
-.logout-link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    text-decoration: none;
-    color: #000;
-    border-top: 1px solid #BDBDBD;
-    font-size: 16px;
-}
-
 main {
     flex-grow: 1;
     padding: 60px;
@@ -160,7 +97,7 @@ main {
     text-decoration: none;
     color: #000;
     font-size: 16px;
-    background-color: #D9D9D9;
+    background-color: #8E8E8E;
     width: 100%;
     text-align: center;
     display: inline-block;
@@ -182,4 +119,6 @@ main {
     background-color: #7a7a7a;
 }
 
-form { margin: 0; }
+form { 
+    margin: 0; 
+}

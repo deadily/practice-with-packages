@@ -12,7 +12,6 @@ $currentPath = $_SERVER['REQUEST_URI'] ?? '';
 
 <body>
 
-<?php include '../main.php'; ?>
 
 <main>
     <div class="content-container">

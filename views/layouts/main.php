@@ -14,10 +14,13 @@ $isStaff = app()->auth::check() && !app()->auth::user()->isAdmin();
 </head>
 <body>
 
+<?php if (app()->auth::check()): ?>
 <aside class="sidebar-wrapper">
     <div class="logo-block">
         <div class="logo">
-            Учебно-<br>методическое<br>управление
+            Учебно-
+методическое
+управление
         </div>
     </div>
 
@@ -54,6 +57,7 @@ $isStaff = app()->auth::check() && !app()->auth::user()->isAdmin();
         <?php endif; ?>
     </nav>
 </aside>
+ <?php endif; ?>
 
 <main class="content-wrapper">
     <?= $content ?? '' ?>

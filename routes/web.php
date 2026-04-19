@@ -2,10 +2,11 @@
 
 use Src\Route;
 
-//Авторизация
+
 Route::add('GET', '/hello', [Controller\Site::class, 'hello'])
     ->middleware('auth');
 
+//Авторизация
 Route::add(['GET', 'POST'], '/login', [Controller\AuthController::class, 'login']);
 Route::add('GET', '/logout', [Controller\AuthController::class, 'logout']);
 

@@ -11,45 +11,6 @@ $currentPath = $_SERVER['REQUEST_URI'] ?? '';
 </head>
 
 <body>
-<aside>
-    <div>
-        <div class="logo">
-            Учебно-<br>методическое<br>управление
-        </div>
-
-        <nav>
-            <?php if (!app()->auth::check()): ?>
-                <a href="<?= app()->route->getUrl('/login') ?>"
-                   class="<?= ($currentPath == '/login') ? 'active' : '' ?>">
-                    Вход
-                </a>
-            <?php endif; ?>
-
-            <?php if (app()->auth::check() && app()->auth::user()->isAdmin()): ?>
-                <a href="<?= app()->route->getUrl('/admin_main') ?>"
-                   class="<?= (strpos($currentPath, '/admin') !== false) ? 'active' : '' ?>">
-                    Управление пользователями
-                </a>
-            <?php endif; ?>
-        </nav>
-    </div>
-
-    <div class="sidebar-footer">
-        <?php if (app()->auth::check()): ?>
-            <div class="user-info">
-                <div><?= htmlspecialchars(app()->auth::user()->login ?? 'login') ?></div>
-                <div style="opacity: 0.6;">
-                    <?= app()->auth::user()->isAdmin() ? 'Администратор' : 'Сотрудник' ?>
-                </div>
-            </div>
-
-            <a href="<?= app()->route->getUrl('/logout') ?>" class="logout-link">
-                <span>Выйти</span>
-                <span>&rarr;</span>
-            </a>
-        <?php endif; ?>
-    </div>
-</aside>
 
 <main>
     <div class="content-container">

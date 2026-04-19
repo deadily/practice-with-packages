@@ -56,4 +56,17 @@ class AdminController
             return app()->route->redirect('/admin_add_employee');
         }
     }
+
+    public function deleteUser(Request $request): void
+        {
+            if ($request->method === 'POST') {
+                $id = $request->get('id');
+                $user = User::find($id);
+                if ($user) {
+                    $user->delete();
+                }
+            }
+
+            app()->route->redirect('/admin_main'); 
+        }
 }

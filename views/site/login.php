@@ -12,8 +12,6 @@ if ($message) unset($_SESSION['message']);
 </head>
 <body>
 
-<div class="page-title">Учебно-методическое управление</div>
-
 <div class="login-card">
     <h2>Авторизация</h2>
 
