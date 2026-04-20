@@ -20,6 +20,10 @@ $currentPath = $_SERVER['REQUEST_URI'] ?? '';
 
         <div class="form-container">
             <form action="<?= app()->route->getUrl('/create_user') ?>" method="POST">
+                <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+                <?php if (!empty($message)): ?>
+                    <pre class="form-message"><?= htmlspecialchars($message) ?></pre>
+                <?php endif; ?>
                 <div class="form-grid">
                     <label for="login" class="form-label">Логин</label>
                     <div class="form-input-wrapper">
