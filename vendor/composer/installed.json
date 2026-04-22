@@ -142,6 +142,53 @@
             "install-path": "../carbonphp/carbon-doctrine-types"
         },
         {
+            "name": "deadily/collect",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deadily/collect.git",
+                "reference": "a87862b1eacaeec4141ed232ea407484bfc91e01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deadily/collect/zipball/a87862b1eacaeec4141ed232ea407484bfc91e01",
+                "reference": "a87862b1eacaeec4141ed232ea407484bfc91e01",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 | ^8.0"
+            },
+            "time": "2026-04-22T18:22:34+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Collect\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "dara",
+                    "email": "zuevadara04@gmail.com"
+                }
+            ],
+            "description": "Module for working with arrays",
+            "support": {
+                "issues": "https://github.com/deadily/collect/issues",
+                "source": "https://github.com/deadily/collect/tree/master"
+            },
+            "install-path": "../deadily/collect"
+        },
+        {
             "name": "doctrine/inflector",
             "version": "2.2.x-dev",
             "version_normalized": "2.2.9999999.9999999-dev",

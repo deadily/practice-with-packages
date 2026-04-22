@@ -8,7 +8,8 @@
         "php": "^7.4 | ^8.0",
         "illuminate/database": "12.x-dev",
         "illuminate/events": "12.x-dev",
-        "nikic/fast-route": "^2.0@dev"
+        "nikic/fast-route": "^2.0@dev",
+        "deadily/collect": "dev-master"
     },
     "autoload": {
         "psr-4": {

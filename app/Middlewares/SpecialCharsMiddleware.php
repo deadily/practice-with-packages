@@ -3,14 +3,21 @@
 namespace Middlewares;
 
 use Src\Request;
+use function Collect\collection; 
 
 class SpecialCharsMiddleware
 {
-   public function handle(Request $request):Request
-   {
-       foreach ($request->all() as $key => $value) {
-           $request->set($key, is_string($value) ? htmlspecialchars($value) : $value);
-       }
-       return $request;
-   }
+    public function handle(Request $request): Request
+    {
+        $data = $request->all();
+
+        collection($data)
+            ->each(function ($value, $key) use ($request) {
+                if (is_string($value)) {
+                    $request->set($key, htmlspecialchars($value));
+                }
+            });
+
+        return $request;
+    }
 }

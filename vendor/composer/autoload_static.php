@@ -19,6 +19,7 @@ class ComposerStaticInitd4385e81481a5a0b5d0d16fdd82805c3
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'f625ee536139dfb962a398b200bdb2bd' => __DIR__ . '/..' . '/illuminate/support/functions.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
+        'ef866ad120cc31b1e216bbc2f3c0e8aa' => __DIR__ . '/..' . '/deadily/collect/src/helpers.php',
         'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
     );
@@ -70,6 +71,7 @@ class ComposerStaticInitd4385e81481a5a0b5d0d16fdd82805c3
         ),
         'C' =>
         array (
+            'Collect\\' => 8,
             'Carbon\\Doctrine\\' => 16,
             'Carbon\\' => 7,
         ),
@@ -175,6 +177,10 @@ class ComposerStaticInitd4385e81481a5a0b5d0d16fdd82805c3
         'Doctrine\\Inflector\\' =>
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/src',
+        ),
+        'Collect\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/deadily/collect/src',
         ),
         'Carbon\\Doctrine\\' =>
         array (
