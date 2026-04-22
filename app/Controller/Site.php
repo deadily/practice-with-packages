@@ -46,4 +46,5 @@ class Site
     }
     return new View('site.signup');
     }
+
 }
