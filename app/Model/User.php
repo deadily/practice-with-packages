@@ -16,7 +16,8 @@ class User extends Model implements IdentityInterface
         'full_name',
         'login',
         'password_hash',
-        'role_id'
+        'role_id',
+        'api_token'
     ];
 
     protected static function booted()
@@ -47,5 +48,13 @@ class User extends Model implements IdentityInterface
     public function isAdmin(): bool
     {
         return $this->role_id == 1;
+    }
+
+    public function generateApiToken(): string
+    {
+        $token = bin2hex(random_bytes(32));
+        $this->api_token = $token;
+        $this->save();
+        return $token;
     }
 }

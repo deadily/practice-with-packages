@@ -35,27 +35,19 @@ class SiteTest extends TestCase
         $_SESSION = [];
     }
 
-    /**
-     * Тестирование регистрации пользователя
-     * @dataProvider registrationProvider
-     */
     public function testUserRegistration(array $data, bool $shouldBeCreated, string $expectedMessagePart): void
     {
         $user = null;
         $error = null;
 
-        // Эмуляция логики валидации
-        // Внимание: проверяем на пустоту через trim, чтобы ловить пробелы
         if (trim($data['full_name']) === '' || trim($data['login']) === '' || trim($data['password']) === '') {
-             $error = "Field cannot be empty"; // Используем английский для надежности тестов
+             $error = "Field cannot be empty"; 
         } else {
             $exists = User::where('login', $data['login'])->exists();
             if ($exists) {
                 $error = "Login is busy";
             } else {
                 try {
-                    // ВАЖНО: Хэшируем пароль ЗДЕСЬ, так как модель в тесте может не отрабатывать booted корректно
-                    // или мы хотим протестировать именно запись хеша.
                     $hashedPassword = md5($data['password']);
                     
                     $user = User::create([
@@ -72,13 +64,11 @@ class SiteTest extends TestCase
 
         if ($shouldBeCreated) {
             $this->assertNotNull($user, "Пользователь должен был быть создан");
-            // Проверяем, что в базе лежит именно хеш
             $this->assertEquals(md5($data['password']), $user->password_hash, "Пароль должен быть захеширован MD5");
             if ($user) $user->delete();
         } else {
             $this->assertNull($user, "Пользователь не должен был быть создан");
             
-            // Проверка наличия подстроки (регистронезависимая для надежности)
             $isContain = (stripos($error ?? '', $expectedMessagePart) !== false);
             $this->assertTrue($isContain, "Ожидалась ошибка содержащая '{$expectedMessagePart}', получено: '{$error}'");
         }
@@ -95,7 +85,7 @@ class SiteTest extends TestCase
             'Пустое имя' => [
                 ['full_name' => '', 'login' => 'test_login_' . uniqid(), 'password' => '123456'],
                 false,
-                'empty' // Ищем слово 'empty' из сообщения "Field cannot be empty"
+                'empty'
             ],
             'Пустой пароль' => [
                 ['full_name' => 'Test', 'login' => 'test_login_' . uniqid(), 'password' => ''],
@@ -105,10 +95,6 @@ class SiteTest extends TestCase
         ];
     }
 
-    /**
-     * Тестирование входа в систему
-     * @dataProvider loginProvider
-     */
     public function testUserLogin(string $loginInput, string $passwordInput, bool $expectSuccess): void
     {
         $testLogin = 'login_test_' . uniqid();
@@ -116,8 +102,6 @@ class SiteTest extends TestCase
         
         $user = null;
         try {
-            // 1. Создаем пользователя с УЖЕ захешированным паролем
-            // Это гарантирует, что в базе лежит правильный MD5, независимо от работы модели
             $hashedPass = md5($testPassPlain);
             
             $user = User::create([
@@ -127,7 +111,6 @@ class SiteTest extends TestCase
                 'role_id' => 1
             ]);
 
-            // 2. Пробуем войти
             $authInstance = new User();
             $authUser = $authInstance->attemptIdentity([
                 'login' => ($loginInput === 'USE_TEST_USER' ? $testLogin : $loginInput),
@@ -156,9 +139,6 @@ class SiteTest extends TestCase
         ];
     }
 
-    /**
-     * Тестирование расчета статистики здания
-     */
     public function testBuildingRecalculation(): void
     {
         $building = null;
@@ -205,9 +185,6 @@ class SiteTest extends TestCase
         }
     }
 
-    /**
-     * Тест создания комнаты
-     */
     public function testRoomCreationValidation(): void
     {
         $building = null;

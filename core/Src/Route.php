@@ -64,11 +64,9 @@ class Route
 
     public function start(): void
     {
-    // Fetch method and URI from somewhere
     $httpMethod = $_SERVER['REQUEST_METHOD'];
     $uri = $_SERVER['REQUEST_URI'];
 
-    // Strip query string (?foo=bar) and decode URI
     if (false !== $pos = strpos($uri, '?')) {
         $uri = substr($uri, 0, $pos);
     }
@@ -86,7 +84,6 @@ class Route
         case Dispatcher::FOUND:
             $handler = $routeInfo[1];
             $vars = array_values($routeInfo[2]);
-    //Вызываем обработку всех Middleware
             $vars[] = Middleware::single()->go($httpMethod, $uri, new Request());
             $class = $handler[0];
             $action = $handler[1];

@@ -9,27 +9,33 @@ class Request
     protected array $body;
     public string $method;
     public array $headers;
+    private array $attributes = [];
+    private array $data = [];
 
     public function __construct()
     {
         $this->body = $_REQUEST;
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->headers = getallheaders() ?? [];
+        $this->data = array_merge($_GET, $_POST);
     }
 
     public function all(): array
     {
         return $this->body + $this->files();
+        return $this->data;
     }
 
-    public function set($field, $value):void
+    public function set(string $key,$field, $value):void
     {
         $this->body[$field] = $value;
+        $this->data[$key] = $value;
     }
 
     public function get(string $field, $default = null)
     {
         return $this->body[$field] ?? $default;
+        return $this->data[$key] ?? $default;
     }
 
     public function files(): array
@@ -43,5 +49,13 @@ class Request
             return $this->body[$key];
         }
         throw new Error('Accessing a non-existent property');
+    }
+    public function setAttribute(string $key, $value): void
+    {
+        $this->attributes[$key] = $value;
+    }
+    public function getAttribute(string $key)
+    {
+        return $this->attributes[$key] ?? null;
     }
 }
