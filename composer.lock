@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d0994dcdcc9d34aa8bca3cc3e03a68b",
+    "content-hash": "cac034aeb49235734a78c0d0d3310600",
     "packages": [
         {
             "name": "brick/math",
@@ -140,6 +140,91 @@
                 }
             ],
             "time": "2026-03-20T21:20:48+00:00"
+        },
+        {
+            "name": "deadily/collect",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deadily/collect.git",
+                "reference": "a87862b1eacaeec4141ed232ea407484bfc91e01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deadily/collect/zipball/a87862b1eacaeec4141ed232ea407484bfc91e01",
+                "reference": "a87862b1eacaeec4141ed232ea407484bfc91e01",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 | ^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Collect\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "dara",
+                    "email": "zuevadara04@gmail.com"
+                }
+            ],
+            "description": "Module for working with arrays",
+            "support": {
+                "issues": "https://github.com/deadily/collect/issues",
+                "source": "https://github.com/deadily/collect/tree/master"
+            },
+            "time": "2026-04-22T18:22:34+00:00"
+        },
+        {
+            "name": "deadily/validator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deadily/validator.git",
+                "reference": "57c016286a5360f2cc7eb7392c5e72735255844c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deadily/validator/zipball/57c016286a5360f2cc7eb7392c5e72735255844c",
+                "reference": "57c016286a5360f2cc7eb7392c5e72735255844c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 | ^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Validator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "deadily",
+                    "email": "zuevadara04@gmail.com"
+                }
+            ],
+            "description": "Validation package",
+            "support": {
+                "issues": "https://github.com/deadily/validator/issues",
+                "source": "https://github.com/deadily/validator/tree/master"
+            },
+            "time": "2026-04-22T19:03:25+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -2041,6 +2126,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "deadily/collect": 20,
+        "deadily/validator": 20,
         "illuminate/database": 20,
         "illuminate/events": 20,
         "nikic/fast-route": 20
