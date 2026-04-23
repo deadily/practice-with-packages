@@ -14,7 +14,8 @@ class Request
 
     public function __construct()
     {
-        $this->body = $_REQUEST;
+        // $_REQUEST содержит и GET, и POST, и COOKIE. Это самый безопасный вариант для простых API
+        $this->body = $_REQUEST; 
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->headers = getallheaders() ?? [];
         $this->data = array_merge($_GET, $_POST);
@@ -22,28 +23,24 @@ class Request
 
     public function all(): array
     {
-        return $this->body + $this->files();
-        return $this->data;
+        return $this->body;
     }
 
-    public function set(string $key, $value):void
+    public function set(string $key, $value): void
     {
-        $this->body[$field] = $value;
+        $this->body[$key] = $value;
         $this->data[$key] = $value;
     }
 
-    // public function get(string $field, $default = null)
-    // {
-    //     return $this->body[$field] ?? $default;
-    //     return $this->data[$key] ?? $default;
-    // }
-
-    public function get(string $field = '', string $key = ''){
-        if(isset($field)!==''){
-            return $this->body[$field] ?? null;
-        }else{
-            return $this->data[$key] ?? null;
-        }
+    /**
+     * Получение параметра.
+     * @param string $key Ключ параметра
+     * @param mixed $default Значение по умолчанию
+     */
+    public function get(string $key, $default = null)
+    {
+        // Ищем в body (который $_REQUEST)
+        return $this->body[$key] ?? $default;
     }
 
     public function files(): array
@@ -58,10 +55,12 @@ class Request
         }
         throw new Error('Accessing a non-existent property');
     }
+
     public function setAttribute(string $key, $value): void
     {
         $this->attributes[$key] = $value;
     }
+
     public function getAttribute(string $key)
     {
         return $this->attributes[$key] ?? null;

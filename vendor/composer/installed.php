@@ -3,7 +3,7 @@
         'name' => 'deadily/php',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ec19fb170cdbf3c4100d0d0875c3f022128934a4',
+        'reference' => '5dd4f61788bc162ed5a33596cb2e0d3e52c5ab8e',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -44,7 +44,7 @@
         'deadily/php' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ec19fb170cdbf3c4100d0d0875c3f022128934a4',
+            'reference' => '5dd4f61788bc162ed5a33596cb2e0d3e52c5ab8e',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -163,7 +163,7 @@
         'illuminate/support' => array(
             'pretty_version' => '12.x-dev',
             'version' => '12.9999999.9999999.9999999-dev',
-            'reference' => 'f7058a519be8b766dc514664dee8e272adc31e0d',
+            'reference' => '783fbbdc81837fcea6bac897bb817f6234cf1989',
             'type' => 'library',
             'install_path' => __DIR__ . '/../illuminate/support',
             'aliases' => array(),
@@ -190,7 +190,7 @@
         'nesbot/carbon' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '9b04563ba6a3fc04ed46d63c5718223d3900e88e',
+            'reference' => '7a342129e15e7568ff888bb2a5017b9c1c5a5805',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nesbot/carbon',
             'aliases' => array(
@@ -288,7 +288,7 @@
         'phpunit/phpunit' => array(
             'pretty_version' => '11.5.x-dev',
             'version' => '11.5.9999999.9999999-dev',
-            'reference' => 'd6c840ef1ee01ba09dde0674374fd226cf1bb0e8',
+            'reference' => 'aa07a084c48ef52ef4d456798c0117317fa0e1c8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -505,7 +505,7 @@
         'symfony/clock' => array(
             'pretty_version' => '7.4.x-dev',
             'version' => '7.4.9999999.9999999-dev',
-            'reference' => '0c02b40c70639303a0a5cbe058beb6e73349b871',
+            'reference' => '2e52bd2f9e8d7e9e82da0f7a5780e1d52a096182',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/clock',
             'aliases' => array(),
@@ -561,7 +561,7 @@
         'symfony/translation' => array(
             'pretty_version' => '7.4.x-dev',
             'version' => '7.4.9999999.9999999-dev',
-            'reference' => '350eb0b8e6334e5cc46a36121bd2ede5571f3f40',
+            'reference' => '06e8e5ed0aae72d553d2e46fe85758c4476bc8b5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/translation',
             'aliases' => array(),

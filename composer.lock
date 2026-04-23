@@ -869,12 +869,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "f7058a519be8b766dc514664dee8e272adc31e0d"
+                "reference": "783fbbdc81837fcea6bac897bb817f6234cf1989"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/f7058a519be8b766dc514664dee8e272adc31e0d",
-                "reference": "f7058a519be8b766dc514664dee8e272adc31e0d",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/783fbbdc81837fcea6bac897bb817f6234cf1989",
+                "reference": "783fbbdc81837fcea6bac897bb817f6234cf1989",
                 "shasum": ""
             },
             "require": {
@@ -941,7 +941,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-04-13T13:00:08+00:00"
+            "time": "2026-04-18T13:27:49+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -1011,12 +1011,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "9b04563ba6a3fc04ed46d63c5718223d3900e88e"
+                "reference": "7a342129e15e7568ff888bb2a5017b9c1c5a5805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/9b04563ba6a3fc04ed46d63c5718223d3900e88e",
-                "reference": "9b04563ba6a3fc04ed46d63c5718223d3900e88e",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/7a342129e15e7568ff888bb2a5017b9c1c5a5805",
+                "reference": "7a342129e15e7568ff888bb2a5017b9c1c5a5805",
                 "shasum": ""
             },
             "require": {
@@ -1109,7 +1109,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-15T06:07:03+00:00"
+            "time": "2026-04-18T11:02:08+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -1391,12 +1391,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/clock.git",
-                "reference": "0c02b40c70639303a0a5cbe058beb6e73349b871"
+                "reference": "2e52bd2f9e8d7e9e82da0f7a5780e1d52a096182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/clock/zipball/0c02b40c70639303a0a5cbe058beb6e73349b871",
-                "reference": "0c02b40c70639303a0a5cbe058beb6e73349b871",
+                "url": "https://api.github.com/repos/symfony/clock/zipball/2e52bd2f9e8d7e9e82da0f7a5780e1d52a096182",
+                "reference": "2e52bd2f9e8d7e9e82da0f7a5780e1d52a096182",
                 "shasum": ""
             },
             "require": {
@@ -1461,7 +1461,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-06T11:04:10+00:00"
+            "time": "2026-04-18T13:18:21+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1870,12 +1870,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "350eb0b8e6334e5cc46a36121bd2ede5571f3f40"
+                "reference": "06e8e5ed0aae72d553d2e46fe85758c4476bc8b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/350eb0b8e6334e5cc46a36121bd2ede5571f3f40",
-                "reference": "350eb0b8e6334e5cc46a36121bd2ede5571f3f40",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/06e8e5ed0aae72d553d2e46fe85758c4476bc8b5",
+                "reference": "06e8e5ed0aae72d553d2e46fe85758c4476bc8b5",
                 "shasum": ""
             },
             "require": {
@@ -1962,7 +1962,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-14T06:40:07+00:00"
+            "time": "2026-04-18T13:18:21+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -2751,12 +2751,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d6c840ef1ee01ba09dde0674374fd226cf1bb0e8"
+                "reference": "aa07a084c48ef52ef4d456798c0117317fa0e1c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d6c840ef1ee01ba09dde0674374fd226cf1bb0e8",
-                "reference": "d6c840ef1ee01ba09dde0674374fd226cf1bb0e8",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/aa07a084c48ef52ef4d456798c0117317fa0e1c8",
+                "reference": "aa07a084c48ef52ef4d456798c0117317fa0e1c8",
                 "shasum": ""
             },
             "require": {
@@ -2837,7 +2837,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2026-04-22T06:56:20+00:00"
+            "time": "2026-04-23T12:32:42+00:00"
         },
         {
             "name": "sebastian/cli-parser",
