@@ -6,9 +6,7 @@ use Error;
 
 class Application
 {
-   //Список провайдеров приложения
    private array $providers = [];
-   //Данные приложения
    private array $binds = [];
 
    public function __construct(array $settings = [])
@@ -18,7 +16,6 @@ class Application
        $this->bootProviders();
    }
 
-   //Заполнения списка провайдеров из массива
    public function addProviders(array $providers): void
    {
        foreach ($providers as $key => $class) {
@@ -26,7 +23,6 @@ class Application
        }
    }
 
-   //Запуск методов register() у всех провайдеров
    private function registerProviders(): void
    {
        foreach ($this->providers as $provider) {
@@ -34,7 +30,6 @@ class Application
        }
    }
 
-   //Запуск методов bootProviders() у всех провайдеров
    private function bootProviders(): void
    {
        foreach ($this->providers as $provider) {
@@ -42,13 +37,11 @@ class Application
        }
    }
 
-   //Публичный метод для добавления данных в приложение
    public function bind(string $key, $value): void
    {
        $this->binds[$key] = $value;
    }
 
-   //Доступ к внутренним данным извне
    public function __get($key)
    {
        if (array_key_exists($key, $this->binds)) {
@@ -59,7 +52,6 @@ class Application
 
    public function run(): void
    {
-       //Запуск маршрутизации
        $this->route->start();
    }
 }

@@ -19,7 +19,6 @@ class KernelProvider extends AbstractProvider
        $this->app->bind('settings', new Settings($this->settings));
    }
 
-   //Функция, возвращающая массив всех настроек приложения
    private function getConfigs(string $path = ''): array
    {
        $settings = [];

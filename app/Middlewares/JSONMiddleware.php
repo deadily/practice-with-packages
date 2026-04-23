@@ -15,10 +15,8 @@ class JSONMiddleware
            return $request;
        }
 
-       //Получаем неструктурированные json данные и преобразуем их в массив
        $data = json_decode(file_get_contents("php://input"), true) ?? [];
 
-       //Массив сливаем в request
        collection($data)->each(function ($item, $key, $request) {
            $request->set($key, $item);
        }, $request);

@@ -14,7 +14,6 @@ class Request
 
     public function __construct()
     {
-        // $_REQUEST содержит и GET, и POST, и COOKIE. Это самый безопасный вариант для простых API
         $this->body = $_REQUEST; 
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->headers = getallheaders() ?? [];
@@ -39,7 +38,6 @@ class Request
      */
     public function get(string $key, $default = null)
     {
-        // Ищем в body (который $_REQUEST)
         return $this->body[$key] ?? $default;
     }
 

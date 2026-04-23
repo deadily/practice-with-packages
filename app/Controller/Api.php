@@ -19,11 +19,16 @@ class Api
 
     public function login(Request $request): void
     {
-        
-        $login = $request->get('','login');
-        $password = $request->get('','password');
+        $login = $request->get('login');
+        $password = $request->get('password');
 
-        echo $login.PHP_EOL. $password;
+        if (empty($login) || empty($password)) {
+             (new View())->toJSON([
+                'status' => 'error',
+                'message' => 'Login and password are required',
+            ], 400);
+            return;
+        }
 
         $user = User::where('login', $login)
                     ->where('password_hash', md5($password))
@@ -34,6 +39,8 @@ class Api
                 'status' => 'error',
                 'message' => 'Invalid credentials',
             ], 401);
+            
+            return; 
         }
 
         $token = $user->generateApiToken();
@@ -54,6 +61,14 @@ class Api
         
         $user = $request->getAttribute('user');
         
+        if (!$user) {
+             (new View())->toJSON([
+                'status' => 'error',
+                'message' => 'Unauthorized',
+            ], 401);
+            return;
+        }
+
         (new View())->toJSON([
             'status' => 'success',
             'data' => $user->toArray()

@@ -16,7 +16,6 @@ class SiteTest extends TestCase
         $projectRoot = dirname(__DIR__);
         $_SERVER['DOCUMENT_ROOT'] = $projectRoot;
         
-        // 1. Загружаем конфиги
         if (!file_exists($projectRoot . '/config/db.php')) {
             $this->markTestSkipped('Файл config/db.php не найден.');
             return;
@@ -26,7 +25,6 @@ class SiteTest extends TestCase
         $appConfig = include $projectRoot . '/config/app.php';
         $pathConfig = include $projectRoot . '/config/path.php';
 
-        // 2. ИНИЦИАЛИЗАЦИЯ ELOQUENT
         $capsule = new \Illuminate\Database\Capsule\Manager;
 
         $capsule->addConnection([
@@ -43,7 +41,6 @@ class SiteTest extends TestCase
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
 
-        // 3. Инициализация Application
         $settingsArray = [
             'app' => $appConfig,
             'db' => $dbConfig,
@@ -53,8 +50,6 @@ class SiteTest extends TestCase
         try {
             $GLOBALS['app'] = new Src\Application($settingsArray);
         } catch (\TypeError $e) {
-             // Fallback если ожидается объект Settings
-             // $GLOBALS['app'] = new Src\Application(new Src\Settings($settingsArray));
         }
         
         if (!function_exists('app')) {
@@ -66,7 +61,6 @@ class SiteTest extends TestCase
         $_SESSION = [];
     }
 
-    // ✅ ЗАМЕНА: Используем атрибут вместо комментария
     #[DataProvider('registrationProvider')]
     public function testUserRegistration(array $data, bool $shouldBeCreated, string $expectedMessagePart): void
     {
@@ -130,7 +124,6 @@ class SiteTest extends TestCase
         ];
     }
 
-    // ✅ ЗАМЕНА: Используем атрибут вместо комментария
     #[DataProvider('loginProvider')]
     public function testUserLogin(string $loginInput, string $passwordInput, bool $expectSuccess): void
     {
