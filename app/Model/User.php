@@ -2,14 +2,11 @@
 
 namespace Model;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
 
 class User extends Model implements IdentityInterface
 {
-    use HasFactory;
-
     public $timestamps = false;
     
     protected $fillable = [
@@ -27,16 +24,17 @@ class User extends Model implements IdentityInterface
         });
     }
 
-    public function findIdentity(int $id)
+    public function generateApiToken(): string
     {
-        return static::where('id', $id)->first();
+        $token = bin2hex(random_bytes(32));
+        $this->api_token = $token;
+        $this->save();
+        return $token;
     }
 
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
+    public function findIdentity(int $id) { return static::where('id', $id)->first(); }
+    public function getId(): int { return $this->id; }
+    
     public function attemptIdentity(array $credentials)
     {
         return self::where([
@@ -48,13 +46,5 @@ class User extends Model implements IdentityInterface
     public function isAdmin(): bool
     {
         return $this->role_id == 1;
-    }
-
-    public function generateApiToken(): string
-    {
-        $token = bin2hex(random_bytes(32));
-        $this->api_token = $token;
-        $this->save();
-        return $token;
     }
 }

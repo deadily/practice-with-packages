@@ -26,16 +26,24 @@ class Request
         return $this->data;
     }
 
-    public function set(string $key,$field, $value):void
+    public function set(string $key, $value):void
     {
         $this->body[$field] = $value;
         $this->data[$key] = $value;
     }
 
-    public function get(string $field, $default = null)
-    {
-        return $this->body[$field] ?? $default;
-        return $this->data[$key] ?? $default;
+    // public function get(string $field, $default = null)
+    // {
+    //     return $this->body[$field] ?? $default;
+    //     return $this->data[$key] ?? $default;
+    // }
+
+    public function get(string $field = '', string $key = ''){
+        if(isset($field)!==''){
+            return $this->body[$field] ?? null;
+        }else{
+            return $this->data[$key] ?? null;
+        }
     }
 
     public function files(): array
