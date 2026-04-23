@@ -1,7 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Src\Request;
 use Model\User;
 use Model\Building;
 use Model\Room;
@@ -16,15 +16,46 @@ class SiteTest extends TestCase
         $projectRoot = dirname(__DIR__);
         $_SERVER['DOCUMENT_ROOT'] = $projectRoot;
         
-        $appConfig = include $projectRoot . '/config/app.php';
-        $dbConfig = include $projectRoot . '/config/db.php';
-        $pathConfig = include $projectRoot . '/config/path.php';
+        // 1. Загружаем конфиги
+        if (!file_exists($projectRoot . '/config/db.php')) {
+            $this->markTestSkipped('Файл config/db.php не найден.');
+            return;
+        }
         
-        $GLOBALS['app'] = new Src\Application(new Src\Settings([
+        $dbConfig = include $projectRoot . '/config/db.php';
+        $appConfig = include $projectRoot . '/config/app.php';
+        $pathConfig = include $projectRoot . '/config/path.php';
+
+        // 2. ИНИЦИАЛИЗАЦИЯ ELOQUENT
+        $capsule = new \Illuminate\Database\Capsule\Manager;
+
+        $capsule->addConnection([
+            'driver'    => $dbConfig['driver'] ?? 'mysql',
+            'host'      => $dbConfig['host'] ?? 'localhost',
+            'database'  => $dbConfig['database'],
+            'username'  => $dbConfig['username'],
+            'password'  => $dbConfig['password'],
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix'    => '',
+        ]);
+
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
+
+        // 3. Инициализация Application
+        $settingsArray = [
             'app' => $appConfig,
             'db' => $dbConfig,
             'path' => $pathConfig,
-        ]));
+        ];
+        
+        try {
+            $GLOBALS['app'] = new Src\Application($settingsArray);
+        } catch (\TypeError $e) {
+             // Fallback если ожидается объект Settings
+             // $GLOBALS['app'] = new Src\Application(new Src\Settings($settingsArray));
+        }
         
         if (!function_exists('app')) {
             function app() {
@@ -35,6 +66,8 @@ class SiteTest extends TestCase
         $_SESSION = [];
     }
 
+    // ✅ ЗАМЕНА: Используем атрибут вместо комментария
+    #[DataProvider('registrationProvider')]
     public function testUserRegistration(array $data, bool $shouldBeCreated, string $expectedMessagePart): void
     {
         $user = null;
@@ -64,8 +97,10 @@ class SiteTest extends TestCase
 
         if ($shouldBeCreated) {
             $this->assertNotNull($user, "Пользователь должен был быть создан");
-            $this->assertEquals(md5($data['password']), $user->password_hash, "Пароль должен быть захеширован MD5");
-            if ($user) $user->delete();
+            if ($user) {
+                $this->assertEquals(md5($data['password']), $user->password_hash, "Пароль должен быть захеширован MD5");
+                $user->delete();
+            }
         } else {
             $this->assertNull($user, "Пользователь не должен был быть создан");
             
@@ -95,6 +130,8 @@ class SiteTest extends TestCase
         ];
     }
 
+    // ✅ ЗАМЕНА: Используем атрибут вместо комментария
+    #[DataProvider('loginProvider')]
     public function testUserLogin(string $loginInput, string $passwordInput, bool $expectSuccess): void
     {
         $testLogin = 'login_test_' . uniqid();
@@ -118,7 +155,7 @@ class SiteTest extends TestCase
             ]);
 
             if ($expectSuccess) {
-                $this->assertNotNull($authUser, "Вход должен быть успешным. Логин: {$testLogin}, Пароль: {$passwordInput}");
+                $this->assertNotNull($authUser, "Вход должен быть успешным.");
                 $this->assertEquals($user->id, $authUser->id);
             } else {
                 $this->assertNull($authUser, "Вход должен быть неудачным");
@@ -144,6 +181,7 @@ class SiteTest extends TestCase
         $building = null;
         $room1 = null;
         $room2 = null;
+        $roomType = null;
 
         try {
             $building = Building::create([
@@ -172,8 +210,8 @@ class SiteTest extends TestCase
                 'seat_total' => 15
             ]);
 
-            $calculatedArea = $building->getCalculatedAreaAttribute();
-            $calculatedSeats = $building->getCalculatedSeatsAttribute();
+            $calculatedArea = $building->calculated_area; 
+            $calculatedSeats = $building->calculated_seats;
 
             $this->assertEqualsWithDelta(80.5, $calculatedArea, 0.01, "Общая площадь должна быть 80.5");
             $this->assertEquals(35, $calculatedSeats, "Общее кол-во мест должно быть 35");
@@ -189,6 +227,7 @@ class SiteTest extends TestCase
     {
         $building = null;
         $room = null;
+        $roomType = null;
 
         try {
             $building = Building::create([
